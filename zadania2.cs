@@ -6,32 +6,34 @@ namespace zadania_2
     {
         static void Main(string[] args)
         {
-            //OcenyPozytywne();
+            OcenyPozytywne();
             //Lokata();
             //Silnia();
             //MinMax5();
-            Pierwsza();
+            //Pierwsza();
+         
         }
         static void OcenyPozytywne()
         {
             int suma = 0;
             int ocena;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 10; i++)
             {
                 Console.Write("Podaj ocenę:");
-                int a = Convert.ToInt32(Console.ReadLine());
-                if (a >= 3) 
+                if (int.TryParse(Console.ReadLine(), out ocena))
                 {
-                    ocena = Convert.ToInt32(Console.ReadLine());
-                    suma += ocena;
-                }
-                else 
-                { 
-                    Console.WriteLine("Ocena negatywna lub poza mozliwymi do uzyskania");
-                    i--;
+                    if (ocena >= 3 && ocena <= 5)
+                    {
+                        suma += ocena;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ocena negatywna lub poza mozliwymi do uzyskania");
+                        i--;
+                    }
                 }
             }
-            double srednia = suma / (double)5;
+            double srednia = suma / (double)10;
             Console.WriteLine("Śrenia z ocen wynosi: {0:N}", srednia);
 
         }
