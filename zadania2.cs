@@ -6,11 +6,12 @@ namespace zadania_2
     {
         static void Main(string[] args)
         {
-            OcenyPozytywne();
+            //OcenyPozytywne();
             //Lokata();
             //Silnia();
             //MinMax5();
             //Pierwsza();
+            Newton();
          
         }
         static void OcenyPozytywne()
@@ -117,6 +118,39 @@ namespace zadania_2
             }
             Console.WriteLine("Ta liczba jest pierwsza");
          
+        }
+
+        static void Newton()
+        {
+            double wynik;
+            Console.WriteLine("Podaj n z symbolu Newtona:");
+            int n = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Podaj k z symbolu Newtona:");
+            int k = Convert.ToInt32(Console.ReadLine());
+            int silnia_n = n, silnia_k = k, silnia_nk = n - k;
+            int i_n = silnia_n, i_k = silnia_k, i_nk = silnia_nk;
+            if(n <= k)
+            {
+                Console.WriteLine("Bledne dane");
+                return;
+            }
+           while(i_n > 1)
+            {
+                silnia_n = silnia_n * (i_n - 1);
+                i_n--;
+            }
+           while(i_k > 1)
+            {
+                silnia_k = silnia_k * (i_k - 1);
+                i_k--;
+            }
+           while(i_nk > 1)
+            {
+                silnia_nk = silnia_nk * (i_nk - 1);
+                i_nk--;
+            }
+            wynik = silnia_n / (silnia_k * silnia_nk);
+            Console.WriteLine("Wynik wynosi {0:0.00}", wynik);
         }
     }
 }
