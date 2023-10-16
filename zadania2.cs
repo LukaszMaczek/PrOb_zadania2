@@ -7,9 +7,10 @@ namespace zadania_2
         static void Main(string[] args)
         {
             //OcenyPozytywne();
-            Lokata();
+            //Lokata();
             //Silnia();
             //MinMax5();
+            Pierwsza();
         }
         static void OcenyPozytywne()
         {
@@ -95,6 +96,25 @@ namespace zadania_2
             }
               Console.WriteLine("Wynik wynosi: {0}", silnia);
 
+        }
+        static void Pierwsza()
+        {
+            Console.WriteLine("Podaj liczbe calkowita:");
+            int liczba = Convert.ToInt32(Console.ReadLine());
+            if (liczba < 2)
+            {
+                Console.WriteLine("Nie jest to liczba pierwsza");
+                return;
+            }
+            for(int i = 2; i < liczba; i++)
+            {
+                if(liczba%i == 0) {
+                    Console.WriteLine("Ta liczba nie jest pierwsza");
+                    return;
+                }
+            }
+            Console.WriteLine("Ta liczba jest pierwsza");
+         
         }
     }
 }
