@@ -7,8 +7,9 @@ namespace zadania_2
         static void Main(string[] args)
         {
             //OcenyPozytywne();
+            Lokata();
             //Silnia();
-            MinMax5();
+            //MinMax5();
         }
         static void OcenyPozytywne()
         {
@@ -16,8 +17,9 @@ namespace zadania_2
             int ocena;
             for (int i = 0; i < 5; i++)
             {
-                Console.Write("Podaj ocenę: ");
-                if (int.Parse(Console.ReadLine()) >= 3) 
+                Console.Write("Podaj ocenę:");
+                int a = Convert.ToInt32(Console.ReadLine());
+                if (a >= 3) 
                 {
                     ocena = Convert.ToInt32(Console.ReadLine());
                     suma += ocena;
@@ -25,6 +27,7 @@ namespace zadania_2
                 else 
                 { 
                     Console.WriteLine("Ocena negatywna lub poza mozliwymi do uzyskania");
+                    i--;
                 }
             }
             double srednia = suma / (double)5;
@@ -34,7 +37,16 @@ namespace zadania_2
 
         static void Lokata()
         {
-
+            Console.WriteLine("Podaj kwote lokaty:");
+            double lok = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Podaj ilosc lat:");
+            int lata = Convert.ToInt32(Console.ReadLine());
+            double finalna = lok;
+            for (int i = 0;i < lata; i++)
+            {
+                finalna += lok * 0.06;
+            }
+            Console.WriteLine("Kwota finalna po {0} latach wynosi {1}", lata, finalna);
         }
 
         static void MinMax5()
