@@ -10,8 +10,10 @@ namespace zadania_2
             //Lokata();
             //Silnia();
             //MinMax5();
+            //Skoki();
             //Pierwsza();
-            Newton();
+            Wszystkie_Pierwsze();
+            //Newton();
          
         }
         static void OcenyPozytywne()
@@ -74,7 +76,23 @@ namespace zadania_2
                 }
             }
             Console.WriteLine("Liczba maksymalna wynosi {0}, a minimalna {1}", max, min);
+        }
 
+        static void Skoki()
+        {
+            Console.WriteLine("Podaj dlugosc skoku:");
+            int pd1 = Convert.ToInt32(Console.ReadLine());
+            int[] ps1 = new int[5];
+            for(int i = 0; i < 5; i++)
+            {
+                Console.WriteLine("Podaj ocene jury z przedziału od 0 do 20:");
+                ps1[i] = Convert.ToInt32(Console.ReadLine());
+            }
+            Array.Sort(ps1);
+            int ps = ps1[2] + ps1[3] + ps1[4];
+            double pd = 60 + (pd1 - 120) * 1.8;
+            double ocena = ps + pd;
+            Console.WriteLine("Ocena za skok wynosi: {0}", ocena);
         }
         static void Silnia()
         {
@@ -100,26 +118,52 @@ namespace zadania_2
               Console.WriteLine("Wynik wynosi: {0}", silnia);
 
         }
-        static void Pierwsza()
+        static bool CzyPierwsza(int liczba)
         {
-            Console.WriteLine("Podaj liczbe calkowita:");
-            int liczba = Convert.ToInt32(Console.ReadLine());
             if (liczba < 2)
             {
-                Console.WriteLine("Nie jest to liczba pierwsza");
-                return;
+                return false;
             }
             for(int i = 2; i < liczba; i++)
             {
                 if(liczba%i == 0) {
-                    Console.WriteLine("Ta liczba nie jest pierwsza");
-                    return;
+                    return false;
                 }
             }
-            Console.WriteLine("Ta liczba jest pierwsza");
+            return true;
          
         }
 
+        static void Pierwsza()
+        {
+            Console.WriteLine("Podaj liczbe calkowita:");
+            int liczba = Convert.ToInt32(Console.ReadLine());
+            if (CzyPierwsza(liczba))
+            {
+                Console.WriteLine("Ta liczba jest pierwsza");
+            }
+            else
+            {
+                Console.WriteLine("Ta liczba nie jest pierwsza");
+            }
+        }
+
+
+        static void Wszystkie_Pierwsze()
+        {
+            Console.WriteLine("Podaj pierwsza liczbe calkowita:");
+            int a = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Podaj druga liczbe calkowita, wieksza niz pierwsza:");
+            int b = Convert.ToInt32(Console.ReadLine());
+            for(int i = a; i <= b; i++)
+            {
+                if (CzyPierwsza(i))
+                {
+                    Console.WriteLine("Liczba {0} jest pierwsza w tym przedziale", i);
+                }
+            }
+
+        }
         static void Newton()
         {
             double wynik;
